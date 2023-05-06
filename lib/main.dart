@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:hive_flutter/hive_flutter.dart';
-import 'package:todo/utils/globals.dart';
-import 'package:todo/widgets/app_button.dart';
+import 'package:todo/app.dart';
+import 'package:todo/utils/constants/app_color.dart';
 
 Future<void> main() async {
   await Hive.initFlutter();
@@ -13,63 +14,17 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: Home(),
-    );
-  }
-}
-
-class Home extends StatelessWidget {
-  const Home({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: whiteColor,
-      body: GestureDetector(
-        onTap: () {
-          debugPrint('Tapped');
-          print('Tapped');
-          FocusScope.of(context).unfocus();
-        },
-        child: Padding(
-          padding: const EdgeInsets.all(defaultPad),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              const CircleAvatar(
-                backgroundColor: Colors.indigoAccent,
-                radius: 50.0,
-              ),
-              const SizedBox(height: defaultPad),
-              const Text('Enter your name to get started'),
-              const SizedBox(height: defaultPad),
-              TextFormField(
-                cursorColor: primaryDarkColor,
-                decoration: InputDecoration(
-                  hintText: 'Enter you name',
-                  contentPadding: const EdgeInsets.all(18.0),
-                  enabledBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(8.0),
-                    borderSide: const BorderSide(width: 2.0, color: greyColor),
-                  ),
-                  focusedBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(12.0),
-                    borderSide: const BorderSide(width: 2.0, color: greyColor),
-                  ),
-                ),
-              ),
-              const SizedBox(height: 32.0),
-              AppButton(
-                title: 'Next',
-                onPress: () {},
-              )
-            ],
-          ),
+      theme: ThemeData(
+        scaffoldBackgroundColor: AppColor.appBgColor,
+        appBarTheme: const AppBarTheme(
+          elevation: 0.0,
+          backgroundColor: AppColor.appBgColor,
         ),
+        textTheme: GoogleFonts.lexendTextTheme(),
       ),
+      home: const App(),
     );
   }
 }

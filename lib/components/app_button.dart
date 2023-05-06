@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:todo/utils/globals.dart';
+import 'package:todo/utils/constants/app_color.dart';
 
 class AppButton extends StatelessWidget {
   const AppButton({
@@ -19,8 +19,10 @@ class AppButton extends StatelessWidget {
       child: ElevatedButton(
         onPressed: onPress,
         style: ElevatedButton.styleFrom(
-          backgroundColor: primaryDarkColor,
-        ),
+            backgroundColor: AppColor.appDarkColor,
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(6.0),
+            )),
         child: Text(
           title,
           style: const TextStyle(
