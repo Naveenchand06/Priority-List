@@ -15,40 +15,46 @@ class DateCardWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      height: 80.0,
-      width: 50.0,
-      padding: const EdgeInsets.all(2.0),
-      decoration: BoxDecoration(
-        color: cardColor.withOpacity(0.1),
-        borderRadius: BorderRadius.circular(6.0),
-        border: Border.all(
-          width: 1.6,
-          color: cardColor,
+    return Column(
+      children: [
+        Expanded(
+          child: Container(
+            height: 80.0,
+            width: 50.0,
+            padding: const EdgeInsets.all(2.0),
+            decoration: BoxDecoration(
+              color: cardColor.withOpacity(0.1),
+              borderRadius: BorderRadius.circular(6.0),
+              border: Border.all(
+                width: 1.6,
+                color: cardColor,
+              ),
+            ),
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text(
+                  date,
+                  style: GoogleFonts.roboto(
+                    fontSize: 12.0,
+                    fontWeight: FontWeight.w500,
+                    color: cardColor,
+                  ),
+                ),
+                Text(
+                  format,
+                  style: GoogleFonts.roboto(
+                    fontSize: 10.0,
+                    fontWeight: FontWeight.w500,
+                    color: cardColor,
+                  ),
+                ),
+              ],
+            ),
+          ),
         ),
-      ),
-      child: Column(
-        mainAxisSize: MainAxisSize.min,
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Text(
-            date,
-            style: GoogleFonts.roboto(
-              fontSize: 12.0,
-              fontWeight: FontWeight.w500,
-              color: cardColor,
-            ),
-          ),
-          Text(
-            format,
-            style: GoogleFonts.roboto(
-              fontSize: 10.0,
-              fontWeight: FontWeight.w500,
-              color: cardColor,
-            ),
-          ),
-        ],
-      ),
+      ],
     );
   }
 }
