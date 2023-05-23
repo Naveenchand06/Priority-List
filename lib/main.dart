@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
+// import 'package:google_fonts/google_fonts.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:todo/app.dart';
 import 'package:todo/utils/constants/app_color.dart';
@@ -22,7 +22,6 @@ class MyApp extends StatelessWidget {
           elevation: 0.0,
           backgroundColor: AppColor.appBgColor,
         ),
-        textTheme: GoogleFonts.lexendTextTheme(),
       ),
       home: const App(),
     );

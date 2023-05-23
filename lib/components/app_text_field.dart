@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:todo/utils/constants/app_color.dart';
+import 'package:todo/utils/responsive.dart';
 
 class AppTextField extends StatefulWidget {
   const AppTextField({
@@ -48,15 +49,17 @@ class _AppTextFieldState extends State<AppTextField> {
       keyboardType: widget.keyboardType,
       textInputAction: widget.fieldAction,
       obscureText: widget.isPassword ? showPassword : false,
-      style: const TextStyle(fontSize: 12.0, color: Colors.black),
+      style: TextStyle(
+          fontSize: Responsive.getPercentW(context, 3.2), color: Colors.black),
       decoration: InputDecoration(
         // filled: true,
         // fillColor: Colors.grey.shade100,
         hintText: widget.hintText,
         hintStyle: TextStyle(
-          fontSize: 12.0,
-          color: Colors.grey.shade700,
+          fontSize: Responsive.getPercentW(context, 3.2),
+          color: Colors.grey.shade600,
         ),
+
         suffixIcon: widget.isPassword
             ? IconButton(
                 onPressed: _passwordVisbilityFunction,
@@ -69,7 +72,7 @@ class _AppTextFieldState extends State<AppTextField> {
                       ),
               )
             : null,
-        contentPadding: const EdgeInsets.all(16.0),
+        contentPadding: EdgeInsets.all(Responsive.getPercentW(context, 4)),
         enabledBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(8.0),
           borderSide:

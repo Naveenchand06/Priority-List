@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:todo/utils/constants/app_color.dart';
+import 'package:todo/utils/responsive.dart';
 
 class AppButton extends StatelessWidget {
   const AppButton({
@@ -15,7 +16,7 @@ class AppButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return SizedBox(
       width: double.infinity,
-      height: 46.0,
+      height: Responsive.getPercentH(context, 5),
       child: ElevatedButton(
         onPressed: onPress,
         style: ElevatedButton.styleFrom(
@@ -25,9 +26,9 @@ class AppButton extends StatelessWidget {
             )),
         child: Text(
           title,
-          style: const TextStyle(
-            fontSize: 16.0,
-            fontWeight: FontWeight.bold,
+          style: TextStyle(
+            fontSize: Responsive.getPercentW(context, 3),
+            fontWeight: FontWeight.w500,
           ),
         ),
       ),
