@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:todo/components/home_calendar_section.dart';
 import 'package:todo/components/task_card.dart';
 import 'package:todo/utils/constants/app_color.dart';
+import 'package:todo/utils/responsive.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -18,19 +19,19 @@ class HomePage extends StatelessWidget {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  const Text(
+                  Text(
                     'Tasks',
                     style: TextStyle(
-                      fontSize: 24.0,
+                      fontSize: Responsive.getPercentW(context, 5.0),
                       fontWeight: FontWeight.w500,
                       color: AppColor.appDarkColor,
                     ),
                   ),
                   IconButton(
                     onPressed: () {},
-                    icon: const Icon(
+                    icon: Icon(
                       Icons.settings_outlined,
-                      size: 30.0,
+                      size: Responsive.getPercentW(context, 6.0),
                       color: AppColor.appGreyColor,
                     ),
                   )
@@ -40,11 +41,10 @@ class HomePage extends StatelessWidget {
               // Date Indication
               const HomeCalendarSection(),
               const SizedBox(height: 16.0),
-
-              const Text(
+              Text(
                 'May 20',
                 style: TextStyle(
-                  fontSize: 16.0,
+                  fontSize: Responsive.getPercentW(context, 4.0),
                   fontWeight: FontWeight.w600,
                 ),
               ),
@@ -54,7 +54,7 @@ class HomePage extends StatelessWidget {
                 child: ListView.separated(
                     separatorBuilder: (context, index) {
                       return const SizedBox(
-                        height: 8.0,
+                        height: 10.0,
                       );
                     },
                     itemCount: 8,
