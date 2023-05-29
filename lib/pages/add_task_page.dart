@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:todo/components/app_text_field.dart';
+import 'package:todo/components/app_button.dart';
+import 'package:todo/components/priority_card.dart';
 import 'package:todo/components/task_text_field.dart';
+import 'package:todo/models/priority_enum.dart';
 import 'package:todo/utils/constants/app_color.dart';
 import 'package:todo/utils/responsive.dart';
+import 'package:todo/utils/styles/font_style.dart';
 
 class AddTaskPage extends ConsumerStatefulWidget {
   const AddTaskPage({super.key});
@@ -15,6 +18,18 @@ class AddTaskPage extends ConsumerStatefulWidget {
 class _AddTaskPageState extends ConsumerState<AddTaskPage> {
   final TextEditingController _titleController = TextEditingController();
   final TextEditingController _descController = TextEditingController();
+
+  Priority selectedPriority = Priority.low;
+
+  final List<Color> priorityColors = [
+    Colors.redAccent,
+    Colors.orange,
+    Colors.green
+  ];
+
+  Color container1Color = Colors.red;
+  Color container2Color = Colors.orange;
+  Color container3Color = Colors.green;
 
   @override
   void dispose() {
@@ -56,9 +71,107 @@ class _AddTaskPageState extends ConsumerState<AddTaskPage> {
               minLine: 3,
             ),
             const SizedBox(height: 16.0),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                Text(
+                  'Priority',
+                  style: Fonts.getNunito(
+                    fontSize: Responsive.getPercentW(context, 3.2),
+                    fw: FontWeight.w600,
+                  ),
+                ),
+                const SizedBox(width: 6.0),
+                Text(
+                  '*',
+                  style: Fonts.getNunito(
+                    fontSize: Responsive.getPercentW(context, 3.5),
+                    fw: FontWeight.bold,
+                    color: AppColor.appErrorColor,
+                  ),
+                ),
+              ],
+            ),
+            const SizedBox(height: 16.0),
+            Row(
+              children: [
+                GestureDetector(
+                  onTap: () => changePriorityColor(1),
+                  child: PriorityCard(
+                    title: 'HIGH',
+                    color: container1Color,
+                  ),
+                ),
+                GestureDetector(
+                  onTap: () => changePriorityColor(2),
+                  child: PriorityCard(
+                    title: 'MEDIUM',
+                    color: container2Color,
+                  ),
+                ),
+                GestureDetector(
+                  onTap: () => changePriorityColor(3),
+                  child: PriorityCard(
+                    title: 'LOW',
+                    color: container3Color,
+                  ),
+                )
+              ],
+            ),
+            const SizedBox(height: 16.0),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                Text(
+                  'Date & time',
+                  style: Fonts.getNunito(
+                    fontSize: Responsive.getPercentW(context, 3.2),
+                    fw: FontWeight.w600,
+                  ),
+                ),
+                const SizedBox(width: 6.0),
+                Text(
+                  '*',
+                  style: Fonts.getNunito(
+                    fontSize: Responsive.getPercentW(context, 3.5),
+                    fw: FontWeight.bold,
+                    color: AppColor.appErrorColor,
+                  ),
+                ),
+              ],
+            ),
+            AppButton(
+              title: 'Add',
+              onPress: () {},
+            )
           ],
         ),
       ),
     );
+  }
+
+  changePriorityColor(int num) {
+    if (num == 1) {
+      setState(() {
+        container1Color = priorityColors[num - 1];
+        container2Color = AppColor.appTextGrey;
+        container3Color = AppColor.appTextGrey;
+        selectedPriority = Priority.high;
+      });
+    } else if (num == 2) {
+      setState(() {
+        container2Color = priorityColors[num - 1];
+        container1Color = AppColor.appTextGrey;
+        container2Color = AppColor.appTextGrey;
+        selectedPriority = Priority.medium;
+      });
+    } else {
+      setState(() {
+        container3Color = priorityColors[num - 1];
+        container1Color = AppColor.appTextGrey;
+        container2Color = AppColor.appTextGrey;
+        selectedPriority = Priority.low;
+      });
+    }
   }
 }

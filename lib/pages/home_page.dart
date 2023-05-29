@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:todo/components/home_calendar_section.dart';
 import 'package:todo/components/task_card.dart';
+import 'package:todo/pages/add_task_page.dart';
 import 'package:todo/utils/constants/app_color.dart';
 import 'package:todo/utils/responsive.dart';
 
@@ -68,7 +69,15 @@ class HomePage extends StatelessWidget {
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
       floatingActionButton: FloatingActionButton(
-        onPressed: () {},
+        onPressed: () {
+          Navigator.of(context).push(
+            MaterialPageRoute(
+              builder: (context) {
+                return const AddTaskPage();
+              },
+            ),
+          );
+        },
         backgroundColor: AppColor.appDarkColor,
         child: const Icon(
           Icons.add_outlined,

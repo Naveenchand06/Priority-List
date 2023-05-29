@@ -42,10 +42,11 @@ class WelcomePage extends StatelessWidget {
                 AppButton(
                   title: 'Get Started',
                   onPress: () {
-                    Navigator.of(context).push(
+                    Navigator.of(context).pushAndRemoveUntil(
                       MaterialPageRoute(
                         builder: (context) => const HomePage(),
                       ),
+                      (Route<dynamic> route) => false,
                     );
                   },
                 )
