@@ -21,15 +21,27 @@ class _AddTaskPageState extends ConsumerState<AddTaskPage> {
 
   Priority selectedPriority = Priority.low;
 
-  final List<Color> priorityColors = [
+  final List<Color> _priorityColors = [
     Colors.redAccent,
     Colors.orange,
     Colors.green
   ];
 
-  Color container1Color = Colors.red;
-  Color container2Color = Colors.orange;
-  Color container3Color = Colors.green;
+  // final List<String> _priorities = [
+  //   'HIGH',
+  //   'MEDIUM',
+  //   'LOW',
+  // ];
+
+  // final List<bool> _priorityStatus = [
+  //   false,
+  //   false,
+  //   false,
+  // ];
+
+  Color container1Color = AppColor.appTextGrey;
+  Color container2Color = AppColor.appTextGrey;
+  Color container3Color = AppColor.appTextGrey;
 
   @override
   void dispose() {
@@ -102,6 +114,7 @@ class _AddTaskPageState extends ConsumerState<AddTaskPage> {
                     color: container1Color,
                   ),
                 ),
+                const SizedBox(width: 16.0),
                 GestureDetector(
                   onTap: () => changePriorityColor(2),
                   child: PriorityCard(
@@ -109,6 +122,7 @@ class _AddTaskPageState extends ConsumerState<AddTaskPage> {
                     color: container2Color,
                   ),
                 ),
+                const SizedBox(width: 16.0),
                 GestureDetector(
                   onTap: () => changePriorityColor(3),
                   child: PriorityCard(
@@ -129,7 +143,7 @@ class _AddTaskPageState extends ConsumerState<AddTaskPage> {
                     fw: FontWeight.w600,
                   ),
                 ),
-                const SizedBox(width: 6.0),
+                const SizedBox(width: 10.0),
                 Text(
                   '*',
                   style: Fonts.getNunito(
@@ -153,21 +167,21 @@ class _AddTaskPageState extends ConsumerState<AddTaskPage> {
   changePriorityColor(int num) {
     if (num == 1) {
       setState(() {
-        container1Color = priorityColors[num - 1];
+        container1Color = _priorityColors[num - 1];
         container2Color = AppColor.appTextGrey;
         container3Color = AppColor.appTextGrey;
         selectedPriority = Priority.high;
       });
     } else if (num == 2) {
       setState(() {
-        container2Color = priorityColors[num - 1];
+        container2Color = _priorityColors[num - 1];
         container1Color = AppColor.appTextGrey;
-        container2Color = AppColor.appTextGrey;
+        container3Color = AppColor.appTextGrey;
         selectedPriority = Priority.medium;
       });
     } else {
       setState(() {
-        container3Color = priorityColors[num - 1];
+        container3Color = _priorityColors[num - 1];
         container1Color = AppColor.appTextGrey;
         container2Color = AppColor.appTextGrey;
         selectedPriority = Priority.low;

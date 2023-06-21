@@ -15,7 +15,7 @@ class PriorityCard extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 6.0, vertical: 6.0),
       decoration: BoxDecoration(
-        color: color.withOpacity(0.3),
+        color: color.withOpacity(0.1),
         borderRadius: BorderRadius.circular(6.0),
         border: Border.all(
           width: 2.0,
